@@ -1,6 +1,6 @@
 # MHSDS Synthetic Data Warehouse
 
-A portfolio project modelling a simplified EPR-to-reporting workflow for mental health services, built with:
+A portfolio project modelling a simplified NHS MHSDS-inspired EPR-to-reporting workflow for mental health services, built with:
 
 - SQL Server 2022 running in Docker
 - VS Code + SQL server extension
