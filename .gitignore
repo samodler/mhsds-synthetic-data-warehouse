@@ -1,0 +1,19 @@
+# --- macOS system files ---
+.DS_Store
+
+# --- Python ---
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# --- Private files ---
+*.env
+config.local.*
+
+# --- IDE settings ---
+.vscode/
+
+# --- Data backup files ---
+*.bak
