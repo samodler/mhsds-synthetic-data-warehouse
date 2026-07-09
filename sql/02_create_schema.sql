@@ -162,3 +162,56 @@ END;
 GO
 
 -- SELECT * FROM outcomes
+
+-- staging_ referrals: landing zone for raw incoming referral extracts. 
+
+IF OBJECT_ID('dbo.staging_referrals', 'U') IS NULL
+BEGIN
+CREATE TABLE dbo.staging_referrals (
+    staging_id          INT IDENTITY(1,1)       NOT NULL,
+    local_patient_id    VARCHAR(20)             NULL,
+    local_referral_id   VARCHAR(20)             NULL,
+    team_name           VARCHAR(100)            NULL,
+    referral_date_raw   VARCHAR(20)             NULL,
+    discharge_date_raw  VARCHAR(20)             NULL,
+    source_system       VARCHAR(50)             NULL,
+    load_timestamp      DATETIME                NOT NULL DEFAULT GETDATE(),
+    CONSTRAINT PK_staging_referrals PRIMARY KEY (staging_id)
+);
+END;
+GO
+
+-- SELECT * FROM staging_referrals
+
+
+-- data_quality_issues: log of issues detected by validations checks.
+
+
+IF OBJECT_ID('dbo.data_quality_issues','U') IS NULL
+BEGIN
+    CREATE TABLE dbo.data_quality_issues(
+        issue_id               INT IDENTITY(1,1)           NOT NULL,
+        table_name              VARCHAR(50)                 NOT NULL,
+        record_id               INT                         NULL,
+        issue_type              VARCHAR(100)                NOT NULL,
+        issue_description       VARCHAR(255)                NULL,
+        detected_date           DATETIME                    NOT NULL DEFAULT GETDATE(),
+        CONSTRAINT PK_data_quality_issues PRIMARY KEY (issue_id)
+    );
+END;
+GO
+
+-- SELECT * from dbo.data_quality_issues
+
+SELECT
+    tp.name AS child_table,
+    tr.name AS parent_table,
+    fk.name AS fk_name
+FROM sys.foreign_keys fk
+JOIN sys.tables tp ON fk.parent_object_id = tp.object_id
+JOIN sys.tables tr ON fk.referenced_object_id = tr.object_id
+ORDER BY tp.name;
+
+-- SELECT * from sys.foreign_keys fk
+-- SELECT * FROM sys.tables tp
+-- SELECT * FROM sys.tables tr
