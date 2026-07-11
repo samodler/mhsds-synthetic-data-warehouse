@@ -1,5 +1,6 @@
 import csv
 import random
+from datetime import datetime, timedelta
 
 def read_csv(filepath):
     with open(filepath, newline="") as f:
@@ -12,6 +13,7 @@ def write_csv(filepath, rows, fieldnames):
         writer.writeheader()
         writer.writerows(rows)
 
+#---------------------------------------------------------------------------------
 # patients: inject missing postcode, missing gender, duplicate local_patient_id
 patients = read_csv("data/patients.csv")
 
@@ -44,4 +46,24 @@ write_csv(
         "patient_id", "nhs_number", "local_patient_id", "date_of_birth",
         "gender_code", "ethnicity_code", "postcode"
     ]
+)
+
+#---------------------------------------------------------------------------------
+# referrals: inject missing team_id and discharge-before-referral
+referrals = read_csv("data/referrals.csv")
+
+MISSING_TEAM_RATE = 0.05
+DISCHARGE_BEFORE_REFERRAL_RATE = 0.05
+
+for referral in referrals:
+    if random.random() < MISSING_TEAM_RATE:
+        referral["team_id"] = None
+    if referral["discharge_date"] and random.random() < DISCHARGE_BEFORE_REFERRAL_RATE:
+        referral_date = datetime.strptime(referral["referral_date"], "%Y-%m-%d").date()
+        referral["discharge_date"] = referral_date - timedelta(days=random.randint(1, 30))
+
+write_csv(
+    "data/referrals.csv",
+    referrals,
+    ["referral_id", "patient_id", "team_id", "referral_date", "discharge_date"],
 )

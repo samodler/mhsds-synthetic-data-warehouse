@@ -2,7 +2,9 @@ from faker import Faker
 import csv
 
 fake = Faker("en_GB")
+Faker.seed(42) # fixes the random data generator, so every time the script is rerun, the exact same rows are generated. 
 
+#---------------------------------------------------------------------------------
 # services: fixed reference data, not randomly generated
 services = [
     {"service_id": 1, "service_name": "Adult Mental Health", "service_type": "Community"},
@@ -18,6 +20,7 @@ def write_csv(filepath, rows, fieldnames):
 
 write_csv("data/services.csv", services, ["service_id", "service_name", "service_type"])
 
+#---------------------------------------------------------------------------------
 # teams: each team belongs to one service, so service_id must already exist. 
 teams = []
 team_id = 1
@@ -33,6 +36,7 @@ for service in services:
 
 write_csv("data/teams.csv", teams, ["team_id", "team_name", "service_id"])
 
+#---------------------------------------------------------------------------------
 # patients: randomly generated using Faker, clean data with no flaws yet
 
 patients = []
@@ -48,3 +52,34 @@ for patient_id in range(1, NUM_PATIENTS + 1):
         "ethnicity_code": fake.random_element(elements=("A", "B", "C", "D", "Z")),
         "postcode": fake.postcode(),
     })
+
+#---------------------------------------------------------------------------------
+# referrals
+NUM_REFERRALS = 300 # > NUM_PATIENTS to model single patient -> several referrals
+
+referrals = []
+for referral_id in range(1, NUM_REFERRALS + 1):
+    patient = fake.random_element(elements=patients)
+    team = fake.random_element(elements=teams)
+    referral_date = fake.date_between(start_date="-2y", end_date="today")
+
+    if fake.boolean(chance_of_getting_true=70):
+        discharge_date = fake.date_between(start_date=referral_date, end_date="today")
+    else:
+        discharge_date = None #account for referrals that may still be open (no discharge yet)
+    
+    referrals.append(
+        {
+            "referral_id": referral_id,
+            "patient_id": patient["patient_id"],
+            "team_id": team["team_id"],
+            "referral_date": referral_date,
+            "discharge_date": discharge_date,
+        }
+    )
+
+write_csv(
+    "data/referrals.csv",
+    referrals,
+    ["referral_id", "patient_id", "team_id", "referral_date", "discharge_date"]
+)
