@@ -83,3 +83,27 @@ write_csv(
     referrals,
     ["referral_id", "patient_id", "team_id", "referral_date", "discharge_date"]
 )
+
+#---------------------------------------------------------------------------------
+# care_contacts: randomly assigned to referrals, hence some referrals won't have care contacts associated with them
+
+
+NUM_CONTACTS = 600
+
+care_contacts = []
+for contact_id in range(1, NUM_CONTACTS + 1):
+    referral = fake.random_element(elements=referrals)
+    contact_date = fake.date_between(start_date=referral["referral_date"], end_date="today")
+
+    care_contacts.append({
+        "contact_id": contact_id,
+        "referral_id": referral["referral_id"],
+        "contact_date": contact_date,
+        "contact_type": fake.random_element(elements=("Face to face", "Telephone", "Video")),
+    })
+
+write_csv(
+    "data/care_contacts.csv",
+    care_contacts,
+    ["contact_id", "referral_id", "contact_date", "contact_type"]
+)

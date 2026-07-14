@@ -67,3 +67,23 @@ write_csv(
     referrals,
     ["referral_id", "patient_id", "team_id", "referral_date", "discharge_date"],
 )
+
+#---------------------------------------------------------------------------------
+# care_contacts: inject contact dates that occur before the parent referral's referral_date
+care_contacts = read_csv("data/care_contacts.csv")
+
+CONTACT_BEFORE_REFERRAL_RATE = 0.05
+
+# {key: value for item in iterable}
+referral_dates = {referral["referral_id"]: referral["referral_date"] for referral in referrals}
+
+for contact in care_contacts:
+    if random.random() < CONTACT_BEFORE_REFERRAL_RATE:
+        referral_date = datetime.strptime(referral_dates[contact["referral_id"]], "%Y-%m-%d").date()
+        contact["contact_date"] = referral_date - timedelta(days=random.randint(1, 30))
+
+write_csv(
+    "data/care_contacts.csv",
+    care_contacts,
+    ["contact_id", "referral_id", "contact_date", "contact_type"],
+)

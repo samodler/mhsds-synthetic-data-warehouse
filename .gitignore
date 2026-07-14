@@ -17,3 +17,6 @@ config.local.*
 
 # --- Data backup files ---
 *.bak
+
+# --- Internal files ---
+*plan.png
