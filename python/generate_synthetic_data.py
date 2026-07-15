@@ -1,5 +1,7 @@
 from faker import Faker
+import random
 import csv
+from datetime import date
 
 fake = Faker("en_GB")
 Faker.seed(42) # fixes the random data generator, so every time the script is rerun, the exact same rows are generated. 
@@ -106,4 +108,31 @@ write_csv(
     "data/care_contacts.csv",
     care_contacts,
     ["contact_id", "referral_id", "contact_date", "contact_type"]
+)
+
+#---------------------------------------------------------------------------------
+# appointments
+
+NUM_APPOINTMENTS = 200
+
+appointments = []
+for appointment_id in range(1, NUM_APPOINTMENTS+1):
+    referral = fake.random_element(elements=referrals)
+    appointment_date = fake.date_between(start_date=referral["referral_date"], end_date="+30d")
+    if appointment_date < date.today():
+        attendance_status = random.choices(population=["Attended", "DNA", "Cancelled"], weights=[75, 15, 10], k=1)[0]
+    else:
+        attendance_status = None
+        
+    appointments.append({
+        "appointment_id" : appointment_id,
+        "referral_id" : referral["referral_id"],
+        "appointment_date" : appointment_date,
+        "attendance_status" : attendance_status,
+    })
+
+write_csv(
+    "data/appointments.csv",
+    appointments,
+    ["appointment_id", "referral_id", "appointment_date", "attendance_status"]
 )
