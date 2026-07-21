@@ -1,0 +1,6 @@
+local_patient_id,local_referral_id,team_name,referral_date_raw,discharge_date_raw,source_system
+LOC1234AB,REF-0001,Adult Mental Health Team 1,2025-03-15,2025-06-20,RiO
+LOC5678CD,REF-0002,Crisis Resolution Team 2,31/02/2025,,SystmOne
+,REF-0003,Older Adults Mental Health Team 1,2025-01-10,2025-01-05,RiO
+LOC9999ZZ,REF-0004,Unknown Team,2025-05-01,,Lorenzo
+LOC4321XY,REF-0005,,unknown,,SystmOne

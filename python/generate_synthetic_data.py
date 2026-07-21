@@ -167,3 +167,56 @@ write_csv(
     outcomes,
     ("outcome_id", "referral_id", "outcome_date", "outcome_type")
 )
+
+#---------------------------------------------------------------------------------
+# staging_referrals: hand-crafted examples illustrating a raw data extract.
+# staging_id and load_timestamp are NOT generated as SQL Server assigns both automatically on insert (IDENTITY and DEFAULT GETDATE())
+
+staging_referrals = [
+    {
+        "local_patient_id": "LOC1234AB",
+        "local_referral_id": "REF-0001",
+        "team_name": "Adult Mental Health Team 1",
+        "referral_date_raw": "2025-03-15",
+        "discharge_date_raw": "2025-06-20",
+        "source_system": "RiO",
+    },
+    {
+        "local_patient_id": "LOC5678CD",
+        "local_referral_id": "REF-0002",
+        "team_name": "Crisis Resolution Team 2",
+        "referral_date_raw": "31/02/2025",  # invalid calendar date
+        "discharge_date_raw": "",
+        "source_system": "SystmOne",
+    },
+    {
+        "local_patient_id": "",  # missing local patient ID
+        "local_referral_id": "REF-0003",
+        "team_name": "Older Adults Mental Health Team 1",
+        "referral_date_raw": "2025-01-10",
+        "discharge_date_raw": "2025-01-05",  # discharge before referral
+        "source_system": "RiO",
+    },
+    {
+        "local_patient_id": "LOC9999ZZ",
+        "local_referral_id": "REF-0004",
+        "team_name": "Unknown Team",  # doesn't match any real team_name
+        "referral_date_raw": "2025-05-01",
+        "discharge_date_raw": "",
+        "source_system": "Lorenzo",
+    },
+    {
+        "local_patient_id": "LOC4321XY",
+        "local_referral_id": "REF-0005",
+        "team_name": "",  # missing entirely
+        "referral_date_raw": "unknown",  # completely unparseable
+        "discharge_date_raw": "",
+        "source_system": "SystmOne",
+    },
+]
+
+write_csv(
+    "data/staging_referrals.csv",
+    staging_referrals,
+    ["local_patient_id", "local_referral_id", "team_name", "referral_date_raw", "discharge_date_raw", "source_system"],
+)
