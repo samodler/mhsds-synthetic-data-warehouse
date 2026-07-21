@@ -1,0 +1,214 @@
+outcome_id,referral_id,outcome_date,outcome_type
+1,1,2025-10-26,Referred on
+2,2,2026-06-24,Referred on
+3,3,2026-07-08,Deceased
+4,5,2025-10-31,Deceased
+5,6,2025-09-06,Treatment completed
+6,8,2026-02-27,Treatment completed
+7,9,2025-12-17,Deceased
+8,10,2026-06-28,Did not engage
+9,11,2026-03-23,Referred on
+10,12,2026-06-18,Treatment completed
+11,16,2025-11-09,Treatment completed
+12,17,2026-06-19,Deceased
+13,18,2026-07-09,Did not engage
+14,20,2025-02-15,Did not engage
+15,21,2025-12-28,Deceased
+16,23,2026-01-25,Did not engage
+17,24,2025-12-16,Referred on
+18,25,2026-02-18,Did not engage
+19,26,2025-09-14,Treatment completed
+20,27,2025-09-12,Referred on
+21,28,2025-04-14,Treatment completed
+22,30,2025-08-18,Did not engage
+23,31,2026-07-07,Treatment completed
+24,34,2026-04-01,Deceased
+25,36,2025-11-01,Treatment completed
+26,37,2025-11-22,
+27,38,2026-03-09,Did not engage
+28,39,2025-02-18,Deceased
+29,41,2026-03-09,Referred on
+30,42,2026-05-29,Did not engage
+31,43,2026-06-17,Did not engage
+32,47,2026-03-29,Did not engage
+33,48,2025-12-03,Deceased
+34,50,2025-04-04,Did not engage
+35,51,2025-05-19,Referred on
+36,52,2025-09-08,Did not engage
+37,53,2025-12-17,Did not engage
+38,54,2025-10-30,Referred on
+39,56,2025-10-24,Deceased
+40,57,2026-07-17,Did not engage
+41,58,2025-08-16,Treatment completed
+42,60,2026-03-13,Referred on
+43,61,2026-07-03,Treatment completed
+44,62,2026-06-10,Deceased
+45,63,2026-05-24,Treatment completed
+46,64,2026-07-13,Treatment completed
+47,65,2025-11-10,Referred on
+48,66,2025-09-20,Deceased
+49,67,2026-02-27,Deceased
+50,68,2026-01-08,Deceased
+51,69,2025-11-18,Treatment completed
+52,70,2026-05-03,Treatment completed
+53,72,2026-05-21,Treatment completed
+54,73,2025-08-29,Deceased
+55,75,2025-12-26,Treatment completed
+56,77,2025-07-11,Did not engage
+57,78,2026-04-08,Deceased
+58,79,2026-05-07,Did not engage
+59,81,2026-06-30,Deceased
+60,82,2026-05-15,Referred on
+61,83,2025-11-25,Treatment completed
+62,84,2024-12-23,Treatment completed
+63,85,2024-12-09,Deceased
+64,89,2025-11-14,Did not engage
+65,90,2026-04-18,Referred on
+66,92,2026-02-28,Deceased
+67,93,2026-06-13,Treatment completed
+68,94,2025-10-17,Referred on
+69,95,2026-03-03,Treatment completed
+70,97,2026-03-03,Did not engage
+71,98,2025-10-19,Did not engage
+72,99,2026-07-20,Referred on
+73,102,2025-12-16,Treatment completed
+74,104,2026-07-19,Did not engage
+75,105,2025-10-08,Referred on
+76,106,2026-07-16,Referred on
+77,107,2026-06-26,Deceased
+78,108,2026-06-24,
+79,109,2025-05-19,
+80,111,2025-03-13,Did not engage
+81,113,2025-06-07,Deceased
+82,114,2026-03-17,Referred on
+83,117,2026-05-30,Treatment completed
+84,119,2026-02-16,Referred on
+85,121,2025-09-15,Deceased
+86,122,2026-07-20,Treatment completed
+87,123,2025-04-03,Did not engage
+88,124,2025-08-22,Deceased
+89,125,2025-09-21,Referred on
+90,126,2026-06-11,Referred on
+91,127,2025-12-28,Referred on
+92,129,2026-03-19,Treatment completed
+93,130,2026-06-01,Referred on
+94,131,2025-09-08,Treatment completed
+95,132,2024-12-04,Referred on
+96,133,2026-06-01,Did not engage
+97,134,2026-06-06,Referred on
+98,135,2026-02-13,Did not engage
+99,136,2026-07-16,Referred on
+100,137,2025-08-20,Treatment completed
+101,139,2026-02-25,Did not engage
+102,140,2026-04-27,Deceased
+103,142,2025-06-25,Treatment completed
+104,143,2026-01-17,Deceased
+105,144,2026-02-20,Treatment completed
+106,145,2026-05-11,Did not engage
+107,146,2025-10-17,Deceased
+108,147,2026-07-11,Deceased
+109,148,2026-07-01,Did not engage
+110,149,2026-05-26,Treatment completed
+111,151,2025-09-15,Deceased
+112,152,2026-07-18,Deceased
+113,153,2026-05-22,Did not engage
+114,154,2026-06-18,Treatment completed
+115,157,2025-11-21,Referred on
+116,158,2026-06-14,Treatment completed
+117,160,2026-04-10,Did not engage
+118,161,2026-07-20,Deceased
+119,163,2026-06-15,Deceased
+120,164,2026-03-06,Did not engage
+121,165,2026-07-17,Treatment completed
+122,167,2025-01-13,Deceased
+123,173,2026-06-12,Referred on
+124,174,2025-03-19,Did not engage
+125,175,2026-06-08,Treatment completed
+126,176,2026-02-24,Treatment completed
+127,177,2026-06-01,
+128,178,2026-01-31,Deceased
+129,180,2026-04-05,Treatment completed
+130,181,2026-01-11,Referred on
+131,182,2026-07-15,Referred on
+132,184,2025-07-29,Referred on
+133,185,2025-10-16,Did not engage
+134,186,2026-01-12,Did not engage
+135,187,2024-12-08,Treatment completed
+136,189,2025-11-19,Treatment completed
+137,191,2025-12-27,Treatment completed
+138,192,2026-01-14,Deceased
+139,193,2026-03-15,Deceased
+140,194,2026-05-22,Treatment completed
+141,195,2026-05-05,Did not engage
+142,196,2026-05-02,Did not engage
+143,197,2026-04-13,Referred on
+144,198,2026-03-22,Treatment completed
+145,199,2026-05-07,Deceased
+146,200,2026-04-07,Referred on
+147,201,2025-12-14,Did not engage
+148,202,2025-12-18,Treatment completed
+149,204,2025-11-04,Did not engage
+150,205,2025-12-15,Referred on
+151,207,2026-05-29,Treatment completed
+152,211,2026-07-09,Deceased
+153,212,2026-07-02,Treatment completed
+154,213,2025-04-23,Deceased
+155,214,2025-10-20,Treatment completed
+156,216,2026-01-23,Treatment completed
+157,218,2025-12-21,Treatment completed
+158,219,2026-01-19,Treatment completed
+159,220,2026-04-11,Deceased
+160,221,2026-07-09,Did not engage
+161,224,2025-09-17,Treatment completed
+162,225,2025-12-08,Referred on
+163,226,2025-12-04,Treatment completed
+164,227,2025-05-20,Deceased
+165,228,2026-06-03,
+166,231,2026-05-15,Did not engage
+167,232,2026-06-22,Deceased
+168,234,2025-11-04,Treatment completed
+169,235,2026-03-05,Treatment completed
+170,236,2026-07-19,Treatment completed
+171,238,2026-05-01,Treatment completed
+172,239,2026-05-19,Did not engage
+173,240,2025-05-27,Deceased
+174,241,2025-09-15,Deceased
+175,242,2026-06-19,Treatment completed
+176,243,2026-06-03,Deceased
+177,244,2025-05-14,Referred on
+178,245,2026-01-13,Treatment completed
+179,246,2025-06-19,Deceased
+180,248,2025-08-05,Deceased
+181,249,2026-05-03,Deceased
+182,250,2026-05-18,Deceased
+183,252,2025-01-23,Treatment completed
+184,254,2025-11-01,Did not engage
+185,255,2026-07-03,Treatment completed
+186,256,2025-12-01,Deceased
+187,258,2025-11-04,Did not engage
+188,261,2026-03-02,Referred on
+189,263,2026-05-22,Treatment completed
+190,264,2025-12-24,Treatment completed
+191,265,2025-08-22,
+192,266,2026-05-29,Treatment completed
+193,267,2026-04-27,Referred on
+194,268,2026-01-01,Referred on
+195,270,2026-05-16,Did not engage
+196,271,2026-05-14,Did not engage
+197,272,2025-08-20,Deceased
+198,273,2025-07-07,Deceased
+199,275,2026-02-26,Deceased
+200,276,2026-05-17,Referred on
+201,277,2026-06-02,Referred on
+202,278,2025-10-25,Referred on
+203,281,2026-05-07,Treatment completed
+204,283,2025-05-06,Treatment completed
+205,284,2026-03-14,
+206,286,2026-07-18,Did not engage
+207,287,2026-02-01,Deceased
+208,289,2026-01-08,
+209,292,2025-07-28,Did not engage
+210,294,2026-04-28,Referred on
+211,295,2025-12-10,Referred on
+212,299,2026-03-07,Deceased
+213,300,2025-07-19,Did not engage

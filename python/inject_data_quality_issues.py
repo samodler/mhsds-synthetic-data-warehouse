@@ -87,3 +87,22 @@ write_csv(
     care_contacts,
     ["contact_id", "referral_id", "contact_date", "contact_type"],
 )
+
+
+#---------------------------------------------------------------------------------
+# outcomes: inject missing outcome_type
+#---------------------------------------------------------------------------------
+# outcomes: inject incomplete mandatory-style fields (missing outcome_type)
+outcomes = read_csv("data/outcomes.csv")
+
+MISSING_OUTCOME_TYPE_RATE = 0.05
+
+for outcome in outcomes:
+    if random.random() < MISSING_OUTCOME_TYPE_RATE:
+        outcome["outcome_type"] = None
+
+write_csv(
+    "data/outcomes.csv",
+    outcomes,
+    ["outcome_id", "referral_id", "outcome_date", "outcome_type"],
+)

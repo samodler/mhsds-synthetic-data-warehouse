@@ -4,7 +4,10 @@ import csv
 from datetime import date
 
 fake = Faker("en_GB")
-Faker.seed(42) # fixes the random data generator, so every time the script is rerun, the exact same rows are generated. 
+
+# fixe the random data generators, so every time the script is rerun, the exact same rows are generated. 
+Faker.seed(42) 
+random.seed(42)
 
 #---------------------------------------------------------------------------------
 # services: fixed reference data, not randomly generated
@@ -20,7 +23,7 @@ def write_csv(filepath, rows, fieldnames):
         writer.writeheader()
         writer.writerows(rows)
 
-write_csv("data/services.csv", services, ["service_id", "service_name", "service_type"])
+write_csv("data/services.csv", services, ("service_id", "service_name", "service_type"))
 
 #---------------------------------------------------------------------------------
 # teams: each team belongs to one service, so service_id must already exist. 
@@ -36,7 +39,7 @@ for service in services:
         })
         team_id += 1
 
-write_csv("data/teams.csv", teams, ["team_id", "team_name", "service_id"])
+write_csv("data/teams.csv", teams, ("team_id", "team_name", "service_id"))
 
 #---------------------------------------------------------------------------------
 # patients: randomly generated using Faker, clean data with no flaws yet
@@ -83,7 +86,7 @@ for referral_id in range(1, NUM_REFERRALS + 1):
 write_csv(
     "data/referrals.csv",
     referrals,
-    ["referral_id", "patient_id", "team_id", "referral_date", "discharge_date"]
+    ("referral_id", "patient_id", "team_id", "referral_date", "discharge_date")
 )
 
 #---------------------------------------------------------------------------------
@@ -107,7 +110,7 @@ for contact_id in range(1, NUM_CONTACTS + 1):
 write_csv(
     "data/care_contacts.csv",
     care_contacts,
-    ["contact_id", "referral_id", "contact_date", "contact_type"]
+    ("contact_id", "referral_id", "contact_date", "contact_type")
 )
 
 #---------------------------------------------------------------------------------
@@ -125,14 +128,42 @@ for appointment_id in range(1, NUM_APPOINTMENTS+1):
         attendance_status = None
         
     appointments.append({
-        "appointment_id" : appointment_id,
-        "referral_id" : referral["referral_id"],
-        "appointment_date" : appointment_date,
-        "attendance_status" : attendance_status,
+        "appointment_id": appointment_id,
+        "referral_id": referral["referral_id"],
+        "appointment_date": appointment_date,
+        "attendance_status": attendance_status,
     })
 
 write_csv(
     "data/appointments.csv",
     appointments,
-    ["appointment_id", "referral_id", "appointment_date", "attendance_status"]
+    ("appointment_id", "referral_id", "appointment_date", "attendance_status")
+)
+
+#---------------------------------------------------------------------------------
+# outcomes: an outcome record represents"how did an episode of care (referral) conclude, thus only discharged referrals get an outcome
+
+
+#---------------------------------------------------------------------------------
+# outcomes: one outcome per discharged referral — open referrals don't have one yet
+
+discharged_referrals = [r for r in referrals if r["discharge_date"] is not None]
+
+outcomes = []
+outcome_id = 1
+for referral in discharged_referrals:
+    outcomes.append({
+        "outcome_id": outcome_id,
+        "referral_id": referral["referral_id"],
+        "outcome_date": referral["discharge_date"],
+        "outcome_type": fake.random_element(
+            elements=("Treatment completed", "Referred on", "Did not engage", "Deceased")
+        )
+    })
+    outcome_id += 1
+
+write_csv(
+    "data/outcomes.csv",
+    outcomes,
+    ("outcome_id", "referral_id", "outcome_date", "outcome_type")
 )
